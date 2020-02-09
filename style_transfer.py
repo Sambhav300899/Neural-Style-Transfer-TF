@@ -9,6 +9,7 @@ if __name__ == "__main__":
     ap.add_argument('--backbone', help = 'backbone to be used', required = True)
     ap.add_argument('--epochs', help = 'number of epochs', required = False, default = 1000, type = int)
     ap.add_argument('--lr', help = 'learning rate', required = False, default = 5, type = int)
+    ap.add_argument('--output', help = 'path to save output image', required = False, default = 'output.png')
 
     args = vars(ap.parse_args())
 

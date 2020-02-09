@@ -198,7 +198,7 @@ class style_transfer():
             clipped = tf.clip_by_value(combined, min_vals, max_vals)
             combined.assign(clipped)
 
-            print (" total loss:{} style_loss:{} content_loss:{} variation_loss:{}".format(i,
+            print (" total loss:{} style_loss:{} content_loss:{} variation_loss:{}".format(
                                         total_loss, style_loss, content_loss, variation_loss))
             cv2.imshow("image", self.de_proc_func(combined[0].numpy()))
             cv2.waitKey(1)
