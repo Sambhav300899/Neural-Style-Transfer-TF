@@ -153,7 +153,7 @@ class style_transfer():
 
         return np.concatenate((style_ip, content_ip))
 
-    def combine(self, num_iter, lr, output_path):
+    def combine(self, num_iter, lr, output_path, starting):
         '''
         function to combine the image. Calculates
         and updates the image by calculating the gradients
@@ -162,9 +162,21 @@ class style_transfer():
         num_iter : number of iterations to run the update loop
         lr : learing rate for the optimizer
         output_path : path to save the final image
+        starting : to set the starting input as different images
         '''
         #expand dims and apply model pre processing
-        combined = pre_proc(self.content)
+
+        if starting == 'zeros':
+            combined = pre_proc(np.zeros_like(self.content))
+        elif starting == 'content':
+            combined = pre_proc(self.content)
+        elif starting == 'style':
+            combined = pre_proc(self.style)
+        elif starting == 'random':
+            combined = pre_proc(np.random.uniform(low = 0., high = 255.0, size = self.content.shape))
+        else :
+            raise Exception(starting, ' no such starting option, please select from zeros, content, style or random')
+
         combined = self.pre_processing_func(combined)
         combined = tf.Variable(combined, dtype = tf.float32)
 
@@ -211,6 +223,10 @@ class style_transfer():
         plt.plot(range(0, num_iter), losses)
         cv2.imwrite(output_path, self.de_proc_func(img[0]))
         plt.savefig("loss.png")
+
+        for i in range(0, len(intermediate_images)):
+            intermediate_images[i] = cv2.putText(intermediate_images[i], "step {}".format(i * int(num_iter / 10)),
+                                    (20, 70), cv2.FONT_HERSHEY_SIMPLEX, 3, (0, 0, 255), cv2.LINE_AA)
 
         row_1 = intermediate_images[0]
         for i in range(1, 5):

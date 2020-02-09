@@ -10,8 +10,9 @@ if __name__ == "__main__":
     ap.add_argument('--epochs', help = 'number of epochs', required = False, default = 1000, type = int)
     ap.add_argument('--lr', help = 'learning rate', required = False, default = 5, type = int)
     ap.add_argument('--output', help = 'path to save output image', required = False, default = 'output.png')
+    ap.add_argument('--starting', help = 'starting image, can be - zeros, content, style, random', required = False, default = 'content')
 
     args = vars(ap.parse_args())
 
     style_transfer_net = style_transfer(args['backbone'], args['content'], args['style'])
-    style_transfer_net.combine(args['epochs'], args['lr'], args['output'])
+    style_transfer_net.combine(args['epochs'], args['lr'], args['output'], args['starting'])
