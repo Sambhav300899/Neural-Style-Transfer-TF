@@ -13,7 +13,7 @@ from losses import gram_matrix, calc_style_loss, calc_content_loss
 
 class style_transfer():
     '''
-    A class containing the functions realted to style transfer
+    A class containing the functions related to style transfer
 
     init args -
     model_name : can be different model types, eg vgg19, vgg16 etc.
@@ -47,7 +47,7 @@ class style_transfer():
 
     def set_loss_weights(self, content_weight, style_weight, variation_weight):
         '''
-        set the weights for how much each loss contributes to the final loss
+        set the weights for how much each loss contributes to the total loss
 
         args -
         content_weight : weight param for content loss
@@ -175,7 +175,7 @@ class style_transfer():
         elif starting == 'random':
             combined = pre_proc(np.random.uniform(low = 0., high = 255.0, size = self.content.shape))
         else :
-            raise Exception(starting, ' no such starting option, please select from zeros, content, style or random')
+            raise Exception('{} no such starting option, please select from zeros, content, style or random'.format(starting))
 
         combined = self.pre_processing_func(combined)
         combined = tf.Variable(combined, dtype = tf.float32)

@@ -7,8 +7,8 @@ if __name__ == "__main__":
     ap.add_argument('--style', help = 'path to style image', required = True)
     ap.add_argument('--content', help = 'path to content image', required = True)
     ap.add_argument('--backbone', help = 'backbone to be used', required = True)
-    ap.add_argument('--epochs', help = 'number of epochs', required = False, default = 1000, type = int)
-    ap.add_argument('--lr', help = 'learning rate', required = False, default = 5, type = int)
+    ap.add_argument('--epochs', help = 'number of epochs', required = False, default = 500, type = int)
+    ap.add_argument('--lr', help = 'learning rate', required = False, default = 10, type = int)
     ap.add_argument('--output', help = 'path to save output image', required = False, default = 'output.png')
     ap.add_argument('--starting', help = 'starting image, can be - zeros, content, style, random', required = False, default = 'content')
 
