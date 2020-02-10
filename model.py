@@ -217,11 +217,15 @@ class style_transfer():
 
             losses.append(loss)
             img = combined.numpy()
+            #collect the intermediate images at every 10% of total num_iter
             if i % (num_iter / 10) == 0:
                 intermediate_images.append(self.de_proc_func(img[0]))
 
+        #plot the losses w.r.t number of iterations
         plt.plot(range(0, num_iter), losses)
+        #save the final image
         cv2.imwrite(output_path, self.de_proc_func(img[0]))
+        #
         plt.savefig("loss.png")
 
         for i in range(0, len(intermediate_images)):
