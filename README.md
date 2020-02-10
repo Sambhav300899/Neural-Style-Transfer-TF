@@ -1,5 +1,5 @@
 # Neural-Style-Transform-TF
-Neural Style Transfer based on https://arxiv.org/abs/1508.06576 by Leon A. Gatys, Alexander S. Ecker, Matthias Bethge
+Neural Style Transfer based on https://arxiv.org/abs/1508.06576 by Leon A. Gatys, Alexander S. Ecker, Matthias Bethge. For an explanation of the method please read the description of the technique in the demo.ipynb notebook.
 
 # Setup
 ## Download the github repo
